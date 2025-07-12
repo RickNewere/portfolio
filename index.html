@@ -115,13 +115,15 @@
 
 <footer role="contentinfo" class="footer">
     <div class="row">
+        <ul class="footer__social-links">
             <li class="footer__social-link-item">
-                <a href="https://www.linkedin.com/in/riccardo-ranieri/" title="Link to Linkedin Profile">
+                <a href="https://www.linkedin.com/in/riccardo-ranieri/" title="Link to Linkedin Profile" target="_blank"
+                   rel="noopener noreferrer">
                     <img src="./images/linkedin.svg" class="footer__social-image" alt="Linkedin">
                 </a>
             </li>
         </ul>
-        <p>&copy; 2025 - Portfolio designed & developed by Riccardo Ranieri.</p>
+        <p>&copy; 2025 - Portfolio designed &amp; developed by Riccardo Ranieri.</p>
     </div>
 </footer>
 
@@ -130,15 +132,15 @@
 </a>
 
 <script>
-  function copyEmail() {
-    const email = "riccardo.ranieri@gmail.com";
-    navigator.clipboard.writeText(email).then(() => {
-      const btn = document.querySelector(".contact__email");
-      const original = btn.textContent;
-      btn.textContent = "Copied!";
-      setTimeout(() => btn.textContent = original, 2000);
-    });
-  }
+    function copyEmail() {
+      const email = "riccardo.ranieri@gmail.com";
+      navigator.clipboard.writeText(email).then(() => {
+        const btn = document.querySelector(".contact__email");
+        const original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => btn.textContent = original, 2000);
+      });
+    }
 </script>
 
 <script src="./index.js"></script>
