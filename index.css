@@ -591,6 +591,21 @@ body:not(.user-is-tabbing) a:focus {
     max-width: var(--container-medium-width);
 }
 
+.contact__email {
+    background-color: transparent;
+    color: var(--white);
+    border: 1px solid var(--pink);
+    font-size: 1.8rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.contact__email:hover {
+    background-color: var(--pink);
+    color: var(--black);
+}
+
 /* --------------------------------------- */
 /* ----- Footer ----- */
 /* --------------------------------------- */
