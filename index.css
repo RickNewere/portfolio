@@ -441,68 +441,88 @@ body:not(.user-is-tabbing) a:focus {
 /* --------------------------------------- */
 
 .work__box {
-    display: flex;
-    align-items: center;
-}
-
-@media(max-width: 900px) {
-    .work__box {
-        align-items: initial;
-        flex-direction: column-reverse;
-    }
-}
-
-.work__box:not(:last-child) {
-    margin-bottom: 25rem;
-}
-
-@media(max-width: 500px) {
-    .work__box:not(:last-child) {
-        margin-bottom: 20rem;
-    }
-}
-
-.work__links {
-    display: flex;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--gutter-medium);
+  margin-bottom: var(--gutter-huge);
 }
 
 .work__text {
-    flex: 0 0 30%;
+  flex: 1 1 55%;
+  min-width: 280px;
+}
+
+.work__text h3 {
+  font-size: var(--font-size-medium-1);
+  margin-bottom: var(--gutter-small);
+  color: var(--white);
+}
+
+.work__text p {
+  color: var(--white-1);
+  margin-bottom: var(--gutter-small-1);
+  max-width: 100%;
 }
 
 .work__list {
-    /* list-style-type: square; */
-    list-style-position: inside;
-    margin-bottom: var(--gutter-normal);
+  list-style: disc;
+  padding-left: var(--gutter-small);
+  color: var(--white-1);
+  margin-bottom: var(--gutter-small);
+}
+
+.work__list li {
+  margin-bottom: .4rem;
+}
+
+.work__links {
+  margin-top: var(--gutter-small);
+  display: flex;
+  align-items: center;
+}
+
+.link__text {
+  border-bottom: 1px solid var(--pink);
+  padding-right: 1rem;
 }
 
 .work__code {
-    display: block;
-    height: 3rem;
-    margin-left: var(--gutter-normal);
-    transition: all .3s;
-}
-
-.work__code:hover {
-    transform: scale(1.2);
+  height: 3rem;
+  margin-left: var(--gutter-normal);
 }
 
 .work__image-box {
-    margin-bottom: var(--gutter-normal);
+  flex: 1 1 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
 }
 
-@media(min-width: 901px) {
-    .work__image-box {
-        flex: 1;
-        margin: 0 0 0 10rem;
-    }
+.work__image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  object-fit: cover;
+  background-color: #222;
 }
 
+/* Responsive layout */
 @media(max-width: 900px) {
-    .work__code {
-        height: 4rem;
-    }
+  .work__box {
+    flex-direction: column;
+    gap: var(--gutter-normal);
+  }
+
+  .work__text,
+  .work__image-box {
+    flex: 1 1 100%;
+  }
+
+  .work__code {
+    height: 4rem;
+  }
 }
 
 /* --------------------------------------- */
