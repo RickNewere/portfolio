@@ -646,3 +646,26 @@ body:not(.user-is-tabbing) a:focus {
         padding: var(--gutter-medium) 0;
     }
 }
+
+/* --------------------------------------- */
+/* ----- Experience ----- */
+/* --------------------------------------- */
+
+.experience__text {
+    max-width: var(--container-medium-width);
+}
+
+.experience__text h3 {
+    color: var(--white);
+    font-size: var(--font-size-medium-1);
+    margin-bottom: var(--gutter-small-1);
+    margin-top: var(--gutter-medium);
+    font-family: 'Jost', sans-serif;
+}
+
+.experience__text p {
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-normal);
+    color: var(--white-1);
+    margin-bottom: var(--gutter-small-1);
+}
