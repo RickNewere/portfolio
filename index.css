@@ -669,3 +669,118 @@ body:not(.user-is-tabbing) a:focus {
     color: var(--white-1);
     margin-bottom: var(--gutter-small-1);
 }
+
+/* --------------------------------------- */
+/* ----- Experience Entry ----- */
+/* --------------------------------------- */
+
+.experience__entry {
+    margin-bottom: var(--gutter-medium);
+    padding-bottom: var(--gutter-medium);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.experience__header {
+    margin-bottom: 0.5rem;
+}
+
+.experience__meta {
+    display: block;
+    font-size: 1.6rem;
+    color: var(--pink);
+    margin-bottom: var(--gutter-small);
+    font-family: 'Jost', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.experience__client {
+    color: rgba(255,255,255,0.6);
+    font-size: 1.7rem;
+    margin-top: -1rem;
+}
+
+/* --------------------------------------- */
+/* ----- Certifications ----- */
+/* --------------------------------------- */
+
+.certifications__grid {
+    display: flex;
+    gap: var(--gutter-normal);
+    flex-wrap: wrap;
+}
+
+.cert__card {
+    display: flex;
+    align-items: center;
+    gap: var(--gutter-small);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: var(--gutter-small) var(--gutter-normal);
+    flex: 1 1 380px;
+    transition: border-color 0.2s;
+}
+
+.cert__card:hover {
+    border-color: var(--pink);
+}
+
+.cert__badge {
+    font-family: 'Jost', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 1px;
+}
+
+.cert__badge--k8s {
+    background: #326ce5;
+}
+
+.cert__badge--tf {
+    background: #7b42bc;
+}
+
+.cert__info h3 {
+    font-size: 2rem;
+    margin-bottom: 0.4rem;
+}
+
+.cert__issuer {
+    font-size: 1.5rem;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+}
+
+.cert__status {
+    font-size: 1.4rem;
+    margin: 0.4rem 0 0;
+}
+
+.cert__status--active {
+    color: #4caf50;
+}
+
+.cert__status--progress {
+    color: #ff9800;
+}
+
+/* Corner Bank logo — invert doesn't look right on SVG text, override */
+.client__logo--cornerbank {
+    filter: none;
+    opacity: 0.85;
+}
+
+.cert__image {
+    width: 7rem;
+    height: 7rem;
+    object-fit: contain;
+    flex-shrink: 0;
+}
