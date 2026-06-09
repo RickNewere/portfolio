@@ -703,73 +703,28 @@ body:not(.user-is-tabbing) a:focus {
 /* ----- Certifications ----- */
 /* --------------------------------------- */
 
-.certifications__grid {
+.cert__logos {
     display: flex;
-    gap: var(--gutter-normal);
-    flex-wrap: wrap;
-}
-
-.cert__card {
-    display: flex;
+    justify-content: space-evenly;
     align-items: center;
-    gap: var(--gutter-small);
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 8px;
-    padding: var(--gutter-small) var(--gutter-normal);
-    flex: 1 1 380px;
-    transition: border-color 0.2s;
+    filter: grayscale(100%) opacity(.8);
 }
 
-.cert__card:hover {
-    border-color: var(--pink);
+.cert__logo {
+    height: 10rem;
+    max-width: 14rem;
+    object-fit: contain;
 }
 
-.cert__badge {
-    font-family: 'Jost', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--white);
-    width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    letter-spacing: 1px;
-}
+@media(max-width: 1240px) {
+    .cert__logos {
+        overflow-x: scroll;
+        padding: var(--gutter-normal);
+    }
 
-.cert__badge--k8s {
-    background: #326ce5;
-}
-
-.cert__badge--tf {
-    background: #7b42bc;
-}
-
-.cert__info h3 {
-    font-size: 2rem;
-    margin-bottom: 0.4rem;
-}
-
-.cert__issuer {
-    font-size: 1.5rem;
-    color: rgba(255,255,255,0.5);
-    margin: 0;
-}
-
-.cert__status {
-    font-size: 1.4rem;
-    margin: 0.4rem 0 0;
-}
-
-.cert__status--active {
-    color: #4caf50;
-}
-
-.cert__status--progress {
-    color: #ff9800;
+    .cert__logo:not(:last-of-type) {
+        margin-right: var(--gutter-medium);
+    }
 }
 
 /* Corner Bank logo — invert doesn't look right on SVG text, override */
@@ -778,9 +733,3 @@ body:not(.user-is-tabbing) a:focus {
     opacity: 0.85;
 }
 
-.cert__image {
-    width: 7rem;
-    height: 7rem;
-    object-fit: contain;
-    flex-shrink: 0;
-}
