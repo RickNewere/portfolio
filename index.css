@@ -417,6 +417,12 @@ body:not(.user-is-tabbing) a:focus {
     font-size: var(--font-size-normal);
 }
 
+@media(max-width: 1024px) {
+    .header {
+        background-attachment: scroll;
+    }
+}
+
 .header__text {
     position: absolute;
     top: 50%;
@@ -536,7 +542,31 @@ body:not(.user-is-tabbing) a:focus {
 .client__logos {
     display: flex;
     justify-content: space-between;
-    filter: invert(100%) grayscale(100%) opacity(.8);
+    align-items: center;
+}
+
+.client__logo-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    filter: invert(100%) grayscale(100%) opacity(.6);
+    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+.client__logo-link:hover,
+.client__logo-link:focus {
+    transform: scale(1.08);
+    filter: invert(0%) grayscale(0%) opacity(1);
+    outline: none;
+}
+
+.client__logo-link--cornerbank {
+    filter: grayscale(100%) opacity(.6);
+}
+
+.client__logo-link--cornerbank:hover,
+.client__logo-link--cornerbank:focus {
+    filter: grayscale(0%) opacity(1);
 }
 
 .client__logo {
@@ -546,12 +576,25 @@ body:not(.user-is-tabbing) a:focus {
 
 @media(max-width: 1240px) {
     .client__logos {
-        overflow-x: scroll;
-        padding: var(--gutter-normal);
+        overflow-x: auto;
+        padding: var(--gutter-normal) 0;
     }
 
-    .client__logo:not(:last-of-type) {
+    .client__logo-link:not(:last-of-type) {
         margin-right: var(--gutter-medium);
+    }
+}
+
+@media(max-width: 768px) {
+    .client__logos {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 3rem;
+        overflow-x: visible;
+    }
+
+    .client__logo-link:not(:last-of-type) {
+        margin-right: 0;
     }
 }
 
@@ -711,7 +754,21 @@ body:not(.user-is-tabbing) a:focus {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    filter: grayscale(100%) opacity(.8);
+}
+
+.cert__logo-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    filter: grayscale(100%) opacity(.6);
+    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+.cert__logo-link:hover,
+.cert__logo-link:focus {
+    transform: scale(1.08);
+    filter: grayscale(0%) opacity(1);
+    outline: none;
 }
 
 .cert__logo {
@@ -722,18 +779,25 @@ body:not(.user-is-tabbing) a:focus {
 
 @media(max-width: 1240px) {
     .cert__logos {
-        overflow-x: scroll;
-        padding: var(--gutter-normal);
+        overflow-x: auto;
+        padding: var(--gutter-normal) 0;
     }
 
-    .cert__logo:not(:last-of-type) {
+    .cert__logo-link:not(:last-of-type) {
         margin-right: var(--gutter-medium);
     }
 }
 
-/* Corner Bank logo — invert doesn't look right on SVG text, override */
-.client__logo--cornerbank {
-    filter: none;
-    opacity: 0.85;
+@media(max-width: 768px) {
+    .cert__logos {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 3rem;
+        overflow-x: visible;
+    }
+
+    .cert__logo-link:not(:last-of-type) {
+        margin-right: 0;
+    }
 }
 
