@@ -540,6 +540,7 @@ body:not(.user-is-tabbing) a:focus {
 /* --------------------------------------- */
 
 .client__logos-wrapper {
+    --client-logo-gap: 5rem;
     overflow: hidden;
 }
 
@@ -547,22 +548,22 @@ body:not(.user-is-tabbing) a:focus {
     display: flex;
     align-items: center;
     min-width: max-content;
-    gap: 5rem;
-    animation: client-scroll 55s linear infinite;
+    animation: client-scroll 36s linear infinite;
 }
 
 .client__logos--scroll:hover {
     animation-play-state: paused;
 }
 
+/* The trailing gap lives inside each group, so the three groups are exactly a
+   third of the track each and translateX(calc(-100% / 3)) restarts seamlessly.
+   Three copies (not two) because one group is narrower than the visible row —
+   with two, the tail of the loop would expose an empty strip on the right. */
 .client__logos-group {
     display: flex;
     align-items: center;
-    gap: 5rem;
-}
-
-.client__logo--avaloq-logo {
-    display: none;
+    gap: var(--client-logo-gap);
+    padding-right: var(--client-logo-gap);
 }
 
 @keyframes client-scroll {
@@ -570,7 +571,7 @@ body:not(.user-is-tabbing) a:focus {
         transform: translateX(0);
     }
     to {
-        transform: translateX(-50%);
+        transform: translateX(calc(-100% / 3));
     }
 }
 
@@ -592,52 +593,68 @@ body:not(.user-is-tabbing) a:focus {
     max-width: 18rem;
 }
 
-.client__logo:not(.client__logo--text-only) {
+.client__logo:not(.client__logo--cornerbank) {
     filter: invert(100%) grayscale(100%) opacity(.8);
 }
 
-.client__logo--text-only {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 11rem;
-    font-family: 'Jost', sans-serif;
-    font-size: 2.4rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    color: var(--white);
-    filter: none;
+/* Wide wordmark — cap the width so it doesn't tower over the other logos */
+.client__logo--avaloq {
+    max-width: 15rem;
+}
+
+/* Corner Bank logo — invert doesn't look right on its colours, keep it as is */
+.client__logo--cornerbank {
     opacity: 0.85;
 }
 
-/* Corner Bank logo — invert doesn't look right on SVG text, override */
-.client__logo--cornerbank {
-    filter: none !important;
-    opacity: 0.85;
+@media(prefers-reduced-motion: reduce) {
+    .client__logos {
+        animation: none;
+        min-width: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .client__logos-group {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-right: 0;
+    }
+
+    .client__logos-group--clone {
+        display: none;
+    }
 }
 
 @media(max-width: 1240px) {
     .client__logos-wrapper {
-        overflow-x: hidden;
+        --client-logo-gap: 4rem;
     }
 
+    /* Shorter track, shorter duration — keeps the same on-screen speed */
     .client__logos {
-        gap: 4rem;
-        animation-duration: 70s;
+        animation-duration: 34s;
     }
 }
 
 @media(max-width: 768px) {
     .client__logos {
         animation: none;
+        min-width: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .client__logos-group {
         flex-wrap: wrap;
         justify-content: center;
         gap: 5rem 6.5rem;
-        overflow-x: visible;
+        padding-right: 0;
     }
 
-    .client__logo-link:not(:last-of-type) {
-        margin-right: 0;
+    /* Nothing is scrolling, so the duplicated set would just repeat the logos */
+    .client__logos-group--clone {
+        display: none;
     }
 }
 
