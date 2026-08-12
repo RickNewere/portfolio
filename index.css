@@ -541,6 +541,9 @@ body:not(.user-is-tabbing) a:focus {
 
 .client__logos-wrapper {
     --client-logo-gap: 5rem;
+    /* Clipping applies to the padding box, so this vertical breathing room
+       keeps the nudged logos from being cut off at the top */
+    padding: 1rem 0;
     overflow: hidden;
 }
 
@@ -591,9 +594,6 @@ body:not(.user-is-tabbing) a:focus {
 .client__logo {
     height: 6.5rem;
     max-width: 18rem;
-}
-
-.client__logo:not(.client__logo--cornerbank) {
     filter: invert(100%) grayscale(100%) opacity(.8);
 }
 
@@ -602,9 +602,24 @@ body:not(.user-is-tabbing) a:focus {
     max-width: 15rem;
 }
 
-/* Corner Bank logo — invert doesn't look right on its colours, keep it as is */
+/* Single-line wordmark: at the shared height it would out-scale the others,
+   so it is sized on its own */
 .client__logo--cornerbank {
-    opacity: 0.85;
+    height: 3.4rem;
+}
+
+/* Stacked lockup (crest above the wordmark) — needs more height than a
+   wordmark to read at the same optical size, and a nudge up to sit on the
+   same line as the rest */
+.client__logo--generali {
+    height: 9rem;
+    transform: translateY(-0.3rem);
+}
+
+/* The wordmark sits in the lower third of the artwork, which drops it below
+   the line the other logos sit on */
+.client__logo--vodafone {
+    transform: translateY(-0.7rem);
 }
 
 @media(prefers-reduced-motion: reduce) {
