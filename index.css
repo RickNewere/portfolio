@@ -542,8 +542,8 @@ body:not(.user-is-tabbing) a:focus {
 .client__logos-wrapper {
     --client-logo-gap: 5rem;
     /* Clipping applies to the padding box, so this vertical breathing room
-       keeps the nudged logos from being cut off at the top */
-    padding: 1rem 0;
+       keeps the lifted logos from being cut off at the top */
+    padding: 2.5rem 0;
     overflow: hidden;
 }
 
@@ -616,10 +616,11 @@ body:not(.user-is-tabbing) a:focus {
     transform: translateY(-0.3rem);
 }
 
-/* The wordmark sits in the lower third of the artwork, which drops it below
-   the line the other logos sit on */
+/* Symbol above the wordmark: centring the artwork drops the name well below
+   the line the other logos read on, so the whole lockup is lifted until the
+   name sits on that line */
 .client__logo--vodafone {
-    transform: translateY(-0.7rem);
+    transform: translateY(-2.2rem);
 }
 
 @media(prefers-reduced-motion: reduce) {
