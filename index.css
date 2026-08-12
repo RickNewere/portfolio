@@ -66,6 +66,16 @@ html {
     }
 }
 
+/* On phones the smaller root font drags body copy down to ~15px and leaves
+   every section with 100px of padding top and bottom. Reset both against the
+   smaller rem so text stays readable and the page is not mostly empty space. */
+@media(max-width: 600px) {
+    :root {
+        --font-size-small: 2rem;
+        --gutter-huge: 7rem;
+    }
+}
+
 body {
     font-size: var(--font-size-small);
     font-family: var(--font-stack);
@@ -350,28 +360,6 @@ body:not(.user-is-tabbing) a:focus {
     margin-right: var(--gutter-medium);
 }
 
-@media(max-width: 600px) {
-    .nav {
-        justify-content: center;
-        padding: var(--gutter-small) 0;
-    }
-
-    .nav__items {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.4rem 1.2rem;
-    }
-
-    .nav__item:not(:last-child) {
-        margin-right: 0;
-    }
-
-    .nav__link {
-        font-size: 1.4rem;
-        padding: 0.6rem 0;
-    }
-}
-
 .nav__link {
     position: relative;
     display: inline-block;
@@ -401,6 +389,30 @@ body:not(.user-is-tabbing) a:focus {
     right: 0;
     height: 2px;
     background: var(--pink);
+}
+
+/* Kept after the base rules on purpose: when this block sat above them, the
+   unconditional .nav__link padding won and the mobile spacing never applied */
+@media(max-width: 600px) {
+    .nav {
+        justify-content: center;
+        padding: var(--gutter-small) 0;
+    }
+
+    .nav__items {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.4rem 1.6rem;
+    }
+
+    .nav__item:not(:last-child) {
+        margin-right: 0;
+    }
+
+    .nav__link {
+        font-size: 1.6rem;
+        padding: 0.8rem 0;
+    }
 }
 
 /* --------------------------------------- */
@@ -749,6 +761,15 @@ body:not(.user-is-tabbing) a:focus {
     margin-right: var(--gutter-small);
 }
 
+/* Padding rather than a bigger icon: the artwork stays the same size while
+   the tap area grows past the ~44px a thumb needs */
+.footer__social-link-item a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.4rem;
+}
+
 .footer__social-image {
     height: 4rem;
 }
@@ -784,6 +805,15 @@ body:not(.user-is-tabbing) a:focus {
     margin-bottom: var(--gutter-small-1);
     margin-top: var(--gutter-medium);
     font-family: 'Jost', sans-serif;
+}
+
+/* This selector outranks the global h3 rule in the phone breakpoint, so
+   without it the job titles stay as large as the section headings */
+@media(max-width: 500px) {
+    .experience__text h3 {
+        font-size: var(--font-size-medium);
+        margin-top: var(--gutter-normal);
+    }
 }
 
 .experience__text p {
@@ -873,6 +903,13 @@ body:not(.user-is-tabbing) a:focus {
 
     .cert__logo-link:not(:last-of-type) {
         margin-right: 0;
+    }
+
+    /* The badges are square, so the shared height leaves them far smaller
+       than the space the section gives them */
+    .cert__logo {
+        height: 13rem;
+        max-width: 13rem;
     }
 }
 
