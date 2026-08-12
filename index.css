@@ -539,11 +539,39 @@ body:not(.user-is-tabbing) a:focus {
 /* ----- Clients ----- */
 /* --------------------------------------- */
 
+.client__logos-wrapper {
+    overflow: hidden;
+}
+
 .client__logos {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    filter: invert(100%) grayscale(100%) opacity(.8);
+    min-width: max-content;
+    gap: 5rem;
+    animation: client-scroll 55s linear infinite;
+}
+
+.client__logos--scroll:hover {
+    animation-play-state: paused;
+}
+
+.client__logos-group {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.client__logo--avaloq-logo {
+    display: none;
+}
+
+@keyframes client-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 .client__logo-link {
@@ -564,6 +592,24 @@ body:not(.user-is-tabbing) a:focus {
     max-width: 18rem;
 }
 
+.client__logo:not(.client__logo--text-only) {
+    filter: invert(100%) grayscale(100%) opacity(.8);
+}
+
+.client__logo--text-only {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 11rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    color: var(--white);
+    filter: none;
+    opacity: 0.85;
+}
+
 /* Corner Bank logo — invert doesn't look right on SVG text, override */
 .client__logo--cornerbank {
     filter: none !important;
@@ -571,18 +617,19 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 @media(max-width: 1240px) {
-    .client__logos {
-        overflow-x: auto;
-        padding: var(--gutter-normal) 0;
+    .client__logos-wrapper {
+        overflow-x: hidden;
     }
 
-    .client__logo-link:not(:last-of-type) {
-        margin-right: var(--gutter-medium);
+    .client__logos {
+        gap: 4rem;
+        animation-duration: 70s;
     }
 }
 
 @media(max-width: 768px) {
     .client__logos {
+        animation: none;
         flex-wrap: wrap;
         justify-content: center;
         gap: 5rem 6.5rem;
